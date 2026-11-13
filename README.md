@@ -6,6 +6,9 @@ EBM Archive est un outil Windows pour retrouver rapidement des PDF dans une arch
 
 L’outil ne modifie pas les PDF et ne remplace pas l’archive documentaire : il construit un index de recherche à côté des fichiers. Le PDF ouvert reste le document de référence.
 
+<img width="1933" height="1027" alt="image" src="https://github.com/user-attachments/assets/36c66b78-0d78-437e-9f9f-94bd4443d08c" />
+
+
 ## Les deux exécutables
 
 | Exécutable | Rôle | Prérequis |
