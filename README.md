@@ -47,6 +47,16 @@ La compilation fournie cible Windows 64 bits. Elle nécessite Go 1.24 ou ultéri
 
 Le script lance `go mod tidy`, `go vet ./...` et `go test ./...`, puis construit les exécutables dans `dist\` et y copie `fields.json`.
 
+## Tests et intégration continue
+
+Le [workflow GitHub Actions](.github/workflows/go.yml) lance `go vet`, les tests avec couverture et la compilation sur Windows à chaque push ou pull request vers `main`. Il peut aussi être lancé manuellement depuis GitHub. Pour lancer ces vérifications localement :
+
+```powershell
+go vet ./...
+go test ./... -cover
+go build ./...
+```
+
 ## Indexeur
 
 Installez Poppler pour Windows et repérez le chemin vers `pdftotext.exe`. Depuis PowerShell :
