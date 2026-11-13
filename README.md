@@ -1,5 +1,7 @@
 # EBM Archive
 
+[English version](README.en.md)
+
 EBM Archive est un outil Windows pour retrouver rapidement des PDF dans une archive volumineuse, notamment sur un partage réseau. Il extrait quelques métadonnées configurables des PDF, les indexe, puis permet de rechercher un document et de l’ouvrir depuis une interface en terminal.
 
 L’outil ne modifie pas les PDF et ne remplace pas l’archive documentaire : il construit un index de recherche à côté des fichiers. Le PDF ouvert reste le document de référence.
