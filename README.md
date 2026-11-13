@@ -57,6 +57,17 @@ go test ./... -cover
 go build ./...
 ```
 
+## Releases
+
+Poussez un tag de version (`v1.0.0`, par exemple) pour lancer la compilation et publier les assets dans une GitHub Release :
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Le workflow crée la Release si elle n’existe pas et y ajoute `finder.exe`, `indexer.exe` et `fields.json`. Si la Release existe déjà pour ce tag, les assets portant ces noms sont remplacés.
+
 ## Indexeur
 
 Installez Poppler pour Windows et repérez le chemin vers `pdftotext.exe`. Depuis PowerShell :
