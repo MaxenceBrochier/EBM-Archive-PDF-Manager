@@ -13,7 +13,7 @@ import (
 
 // extractorVersion : à incrémenter si la logique d'extraction change,
 // pour forcer la réindexation complète.
-const extractorVersion = 3
+const extractorVersion = 4
 
 type FieldSpec struct {
 	Name      string   `json:"name"`               // clé courte stockée dans le manifest
@@ -28,6 +28,7 @@ type FieldSpec struct {
 type Config struct {
 	MaxPages    int         `json:"max_pages"`    // pages lues par PDF (0 = toutes)
 	MaxMatches  int         `json:"max_matches"`  // valeurs max gardées par champ
+	PrimaryOnly bool        `json:"primary_only"` // champs principaux de l'en-tête uniquement
 	ExcludeDirs []string    `json:"exclude_dirs"` // noms de dossiers ignorés
 	Fields      []FieldSpec `json:"fields"`
 }
@@ -84,6 +85,11 @@ func (c *Config) Extract(text string) map[string][]string {
 // ExtractSection applique les champs globaux et ceux associés à un segment du chemin.
 // Une section vide conserve le comportement historique et inclut tous les champs.
 func (c *Config) ExtractSection(text, section string) map[string][]string {
+	matchLimit := -1
+	if c.PrimaryOnly {
+		text = c.primaryText(text)
+		matchLimit = 1
+	}
 	out := map[string][]string{}
 	for _, f := range c.Fields {
 		if section != "" && len(f.Sections) > 0 && !containsPathSegment(f.Sections, section) {
@@ -91,7 +97,7 @@ func (c *Config) ExtractSection(text, section string) map[string][]string {
 		}
 		var vals []string
 		seen := map[string]bool{}
-		for _, m := range f.re.FindAllStringSubmatch(text, -1) {
+		for _, m := range f.re.FindAllStringSubmatch(text, matchLimit) {
 			v := m[0]
 			if len(m) > 1 {
 				v = m[1]

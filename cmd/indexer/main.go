@@ -42,7 +42,7 @@ type opts struct {
 
 func main() {
 	var o opts
-	var only, test string
+	var only, test, manifestPath string
 	flag.StringVar(&o.root, "root", "", "dossier racine de l'archive (obligatoire)")
 	flag.StringVar(&o.out, "out", "", "dossier du manifest (défaut : <root>/.index)")
 	flag.StringVar(&o.cfgPath, "config", "", "fichier de config des champs (défaut : fields.json à côté de l'exe)")
@@ -52,8 +52,30 @@ func main() {
 	flag.BoolVar(&o.force, "force", false, "tout réindexer, ignorer le manifest existant")
 	flag.StringVar(&only, "only", "", "sections à traiter, séparées par des virgules (ex : data_test)")
 	flag.StringVar(&test, "test", "", "affiche le texte extrait d'un PDF et les valeurs trouvées, puis quitte")
+	flag.StringVar(&manifestPath, "manifest", "", "exporte l'index existant au format XLSX vers ce fichier, sans réindexer")
 	flag.Parse()
 	log.SetFlags(log.Ltime)
+
+	if manifestPath != "" {
+		if o.root == "" {
+			log.Fatal("-root est obligatoire avec -manifest")
+		}
+		if test != "" || only != "" || o.force {
+			log.Fatal("-manifest ne se combine pas avec -test, -only ou -force")
+		}
+		if o.out == "" {
+			o.out = filepath.Join(o.root, manifest.DirName)
+		}
+		stats, err := manifest.ExportXLSX(o.root, o.out, manifestPath)
+		if err != nil {
+			log.Fatalf("export du manifest : %v", err)
+		}
+		log.Printf("Manifest XLSX : %s (%d documents)", manifestPath, stats.Documents)
+		if stats.Errors > 0 {
+			log.Printf("Attention : %d documents en erreur d'extraction sont inclus avec les métadonnées disponibles (voir errors.txt)", stats.Errors)
+		}
+		return
+	}
 
 	if o.cfgPath == "" {
 		o.cfgPath = besideExe("fields.json")
