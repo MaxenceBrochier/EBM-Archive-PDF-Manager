@@ -1,6 +1,6 @@
 # Journal des changements
 
-## v1.1.0 - version proposée, non publiée
+## v1.1.0 - 17 novembre 2026
 
 Cette version succède à v1.0.1. Elle regroupe une nouvelle fonctionnalité
 d'export XLSX et des corrections de reconnaissance des métadonnées principales.
@@ -14,7 +14,7 @@ La documentation anglaise ajoutée depuis le tag v1.0.1 est également actualis�
 - **Patch : remis à 0.** Les corrections sont incluses dans cette version
   mineure ; leur nombre n'est pas ajouté au numéro de patch.
 
-La recommandation est donc **v1.1.0**, et non v1.0.2 ou v2.0.0. La politique
+Le numéro retenu est donc **v1.1.0**, et non v1.0.2 ou v2.0.0. La politique
 d'extraction fournie change néanmoins volontairement les résultats : cette
 évolution et la réindexation nécessaire doivent accompagner le déploiement.
 Ce document ne crée ni tag ni Release GitHub.

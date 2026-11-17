@@ -2,11 +2,14 @@
 
 [Version française](README.md)
 
-**Proposed next version: v1.1.0**, following v1.0.1. See the [changelog](CHANGELOG.md) (French) for changes, impacts, and validation results.
+**Version: v1.1.0**, following v1.0.1. See the [changelog](CHANGELOG.md) (French) for changes, impacts, and validation results.
 
 EBM Archive is a Windows tool for quickly finding PDFs in a large archive, including on a network share. It extracts configurable metadata from PDFs, indexes it, and lets users search for and open documents from a terminal interface.
 
 The tool does not modify PDFs or replace the document archive: it creates a search index alongside the files. The opened PDF remains the reference document.
+
+<img width="1933" height="1027" alt="image" src="https://github.com/user-attachments/assets/f3be9117-6f5c-4f40-ac0b-5d36923bacbc" />
+
 
 ## The two executables
 
@@ -63,7 +66,7 @@ go build ./...
 
 ## Releases
 
-The proposed version is `v1.1.0`: XLSX export warrants a minor release, alongside extraction fixes. Version numbers do not count individual fixes: `MAJOR.MINOR.PATCH` increases according to the level of change, resetting subsequent components to zero. The index format and existing commands remain supported; the supplied metadata selection policy intentionally changes as described below.
+Version `v1.1.0` adds XLSX export, warranting a minor release alongside extraction fixes. Version numbers do not count individual fixes: `MAJOR.MINOR.PATCH` increases according to the level of change, resetting subsequent components to zero. The index format and existing commands remain supported; the supplied metadata selection policy intentionally changes as described below.
 
 After approving the version and the commit to publish, push its tag to build the application and publish its assets to a GitHub Release:
 

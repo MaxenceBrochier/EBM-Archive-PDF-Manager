@@ -2,11 +2,14 @@
 
 [English version](README.en.md)
 
-**Prochaine version proposée : v1.1.0**, après v1.0.1. Voir le [journal des changements](CHANGELOG.md) pour les nouveautés, les impacts et les résultats de validation.
+**Version : v1.1.0**, après v1.0.1. Voir le [journal des changements](CHANGELOG.md) pour les nouveautés, les impacts et les résultats de validation.
 
 EBM Archive est un outil Windows pour retrouver rapidement des PDF dans une archive volumineuse, notamment sur un partage réseau. Il extrait quelques métadonnées configurables des PDF, les indexe, puis permet de rechercher un document et de l’ouvrir depuis une interface en terminal.
 
 L’outil ne modifie pas les PDF et ne remplace pas l’archive documentaire : il construit un index de recherche à côté des fichiers. Le PDF ouvert reste le document de référence.
+
+<img width="1933" height="1027" alt="image" src="https://github.com/user-attachments/assets/36c66b78-0d78-437e-9f9f-94bd4443d08c" />
+
 
 ## Les deux exécutables
 
@@ -63,7 +66,7 @@ go build ./...
 
 ## Releases
 
-La version proposée est `v1.1.0` : l’export XLSX justifie une version mineure, accompagnée de corrections d’extraction. Le nombre de corrections ne détermine pas les numéros : `MAJEUR.MINEUR.PATCH` augmente selon le niveau de changement, et les niveaux suivants repartent à zéro. Le format de l’index et les commandes existantes sont conservés ; la sélection des métadonnées fournie change volontairement, comme décrit ci-dessous.
+La version `v1.1.0` ajoute l’export XLSX, ce qui justifie une version mineure, accompagnée de corrections d’extraction. Le nombre de corrections ne détermine pas les numéros : `MAJEUR.MINEUR.PATCH` augmente selon le niveau de changement, et les niveaux suivants repartent à zéro. Le format de l’index et les commandes existantes sont conservés ; la sélection des métadonnées fournie change volontairement, comme décrit ci-dessous.
 
 Après validation de la version et du commit à publier, poussez son tag pour lancer la compilation et publier les assets dans une GitHub Release :
 
